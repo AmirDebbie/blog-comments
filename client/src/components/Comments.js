@@ -5,22 +5,22 @@ function Comments() {
     {
       name: "Abu Hashmil",
       content: "Comment Content",
-      date: 'Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)'
+      date: "Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)",
     },
     {
       name: "Osamma",
       content: "Comment Content",
-      date: 'Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)'
+      date: "Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)",
     },
     {
       name: "DJ Jihad",
       content: "Comment Content",
-      date: 'Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)'
+      date: "Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)",
     },
     {
       name: "BIBI",
       content: "Comment Content",
-      date: 'Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)'
+      date: "Wed Oct 14 2020 12:20:11 GMT+0300 (Israel Daylight Time)",
     },
   ]);
   const [inputName, setInputName] = useState("");
@@ -29,16 +29,15 @@ function Comments() {
   const nameRef = useRef();
 
   const handleSubmit = () => {
-    if (inputContent === '' || inputName === '') {
-        alert('Please fill out all fields')
-        return
+    if (inputContent === "" || inputName === "") {
+      alert("Please fill out all fields");
+      return;
     }
     const newComment = {
       name: inputName,
       content: inputContent,
-      date: new Date().toString()
-    }
-    console.log(newComment.date)
+      date: new Date().toString(),
+    };
     setComments([newComment, ...comments]);
     nameRef.current.focus();
     setInputName("");
@@ -46,21 +45,21 @@ function Comments() {
   };
 
   const handleKeyUp = (e, nextRef) => {
-      if (e.keyCode === 13) {
-        if (nextRef === 'submit') {
-            handleSubmit();
-        } else {
-            nextRef.current.focus();
-        }
+    if (e.keyCode === 13) {
+      if (nextRef === "submit") {
+        handleSubmit();
+      } else {
+        nextRef.current.focus();
       }
-  }
+    }
+  };
 
   return (
     <div>
       <div style={styles.form}>
         <input
           ref={nameRef}
-          onKeyUp={e => handleKeyUp(e, contentRef)}
+          onKeyUp={(e) => handleKeyUp(e, contentRef)}
           onChange={(e) => setInputName(e.target.value)}
           style={styles.input}
           placeholder="Title"
@@ -70,7 +69,7 @@ function Comments() {
         <br />
         <textarea
           ref={contentRef}
-          onKeyUp={e => handleKeyUp(e, 'submit')}
+          onKeyUp={(e) => handleKeyUp(e, "submit")}
           onChange={(e) => setInputContent(e.target.value)}
           style={styles.input}
           placeholder="Title"
@@ -110,8 +109,8 @@ const styles = {
   },
   date: {
     fontSize: 12,
-    color: '#888'
-  }
+    color: "#888",
+  },
 };
 
 export default Comments;
